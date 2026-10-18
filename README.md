@@ -53,9 +53,9 @@ Add `-h` to any command for help, for example `python3 main.py add-task -h`.
 
 ## Testing
 
-Tests use pytest and live in the `tests/` folder. They run in memory, so your saved data is never touched.
+Tests use pytest and live in the `tests/` folder. 
 
     python3 -m pip install pytest
     python3 -m pytest -v
 
-The tests check that users, projects and tasks are created correctly, that a project belongs to its user, and that completing a task updates the project's progress.
+The tests check that users, projects and tasks are created correctly
