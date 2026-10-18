@@ -1,5 +1,5 @@
 from models import User, Project, Task
-
+from utils import storage
 
 def add_user():
     name = input("Name: ")
@@ -90,6 +90,7 @@ Menu = {
 
 
 def main():
+    storage.load()
     while True:
         print()
         for key, (label, _) in Menu.items():
@@ -99,10 +100,11 @@ def main():
         if choice == "q":
             break
         if choice not in Menu:
-            print("Invalid choice")
+            print("Invalid choice, try again.")
             continue
         try:
             Menu[choice][1]()
+            storage.save()
         except ValueError as e:
             print("Error:", e)
 
