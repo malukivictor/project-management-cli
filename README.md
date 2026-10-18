@@ -27,15 +27,15 @@ Add `-h` to any command for help, for example `python3 main.py add-task -h`.
 
 ## Commands
 
-| Command | What it does |
-|---|---|
-| add-user | Create a user |
-| add-project | Add a project to a user |
-| add-task | Add a task to a project |
-| complete-task | Mark a task complete |
-| list-users | Show all users |
-| list-projects | Show all projects (or one user's, with `--user victor`) |
-| list-tasks | Show the tasks in a project |
+ Command and What it does 
+
+ add-user - Create a user 
+ add-project - Add a project to a user 
+ add-task - Add a task to a project 
+ complete-task - Mark a task complete 
+ list-users - Show all users 
+ list-projects - Show all projects (or one user's, with `--user victor`) 
+ list-tasks - Show the tasks in a project 
 
 ## Files
 
