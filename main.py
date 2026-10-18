@@ -1,5 +1,4 @@
 import argparse
-import sys
 from models import User, Project, Task
 from utils import storage
 
@@ -65,10 +64,10 @@ def complete_task(args):
 
 def build_parser():
     parser = argparse.ArgumentParser(prog="main.py", description="Project-tracking system")
-    sub = parser.add_subparsers(dest="command", required=True, metavar="Pick any command: ")
+    sub = parser.add_subparsers(dest="command", required=True)
     p = sub.add_parser("add-user", help="create a user")
     p.add_argument("--name", required=True, help=" add the user's name")
-    p.add_argument("--email", default="", help="add the user's email)")
+    p.add_argument("--email", default="", help="add the user's email (optional)")
     p.set_defaults(func=add_user)
 
     p = sub.add_parser("list-users", help="list all the users in the system")
@@ -77,7 +76,7 @@ def build_parser():
     p = sub.add_parser("add-project", help="add a project to the user")
     p.add_argument("--user", required=True, help="owner's name")
     p.add_argument("--title", required=True, help="project title")
-    p.add_argument("--description", default="", help="project description ")
+    p.add_argument("--description", default="", help="project description")
     p.add_argument("--due", help="due date, mm/dd/yyyy ")
     p.set_defaults(func=add_project)
 
@@ -107,5 +106,4 @@ if __name__ == "__main__":
         if args.func(args):
             storage.save()
     except ValueError as e:
-        print("Error:", e, file=sys.stderr)
-        sys.exit(1)
+        print("Error:", e)
