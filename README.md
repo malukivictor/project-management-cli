@@ -43,9 +43,19 @@ Add `-h` to any command for help, for example `python3 main.py add-task -h`.
     models/           User, Project and Task classes
     utils/storage.py  saves and loads the JSON data
     data/             tracker.json is created here
+    tests/            pytest tests
 
 ## Notes
 
 - A user has many projects, and a project has many tasks.
 - Due dates for tasks (`--due "Oct 19 2026"`) are stored as YYYY-MM-DD.
 
+
+## Testing
+
+Tests use pytest and live in the `tests/` folder. They run in memory, so your saved data is never touched.
+
+    python3 -m pip install pytest
+    python3 -m pytest -v
+
+The tests check that users, projects and tasks are created correctly, that a project belongs to its user, and that completing a task updates the project's progress.
