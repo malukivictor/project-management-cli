@@ -14,16 +14,13 @@ def find_project(title):
         raise ValueError(f"no project titled '{title}'")
     return project
 
-
 def add_user(args):
     print("Added a user:", User.create(args.name, args.email))
     return True
 
-
 def list_users(args):
     for user in User.all():
         print(user)
-
 
 def add_project(args):
     owner = find_user(args.user)
@@ -32,12 +29,10 @@ def add_project(args):
     print("Added a project:", Project(owner, args.title, args.description, args.due))
     return True
 
-
 def list_projects(args):
     projects = find_user(args.user).projects if args.user else Project.all()
     for project in projects:
         print(project)
-
 
 def add_task(args):
     project = find_project(args.project)
