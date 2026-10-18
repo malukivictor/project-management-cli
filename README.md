@@ -27,7 +27,7 @@ For help, type `python3 main.py -h`.
 
 ## Commands
 
- Command and What it does 
+ Command list and What it does 
 
  add-user - Create a user 
  add-project - Add a project to a user 

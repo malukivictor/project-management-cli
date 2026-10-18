@@ -68,7 +68,7 @@ def build_parser():
     sub = parser.add_subparsers(dest="command", required=True, metavar="Pick any command: ")
     p = sub.add_parser("add-user", help="create a user")
     p.add_argument("--name", required=True, help=" add the user's name")
-    p.add_argument("--email", default="", help="add the user's email ( is optional)")
+    p.add_argument("--email", default="", help="add the user's email)")
     p.set_defaults(func=add_user)
 
     p = sub.add_parser("list-users", help="list all the users in the system")
@@ -77,8 +77,8 @@ def build_parser():
     p = sub.add_parser("add-project", help="add a project to the user")
     p.add_argument("--user", required=True, help="owner's name")
     p.add_argument("--title", required=True, help="project title")
-    p.add_argument("--description", default="", help="project description (is optional)")
-    p.add_argument("--due", help="due date, mm/dd/yyyy (is optional)")
+    p.add_argument("--description", default="", help="project description ")
+    p.add_argument("--due", help="due date, mm/dd/yyyy ")
     p.set_defaults(func=add_project)
 
     p = sub.add_parser("list-projects", help="list projects, optionally for one user")
@@ -88,7 +88,7 @@ def build_parser():
     p = sub.add_parser("add-task", help="add a task to the project")
     p.add_argument("--project", required=True, help="project title")
     p.add_argument("--title", required=True, help="task title")
-    p.add_argument("--assign", help="assign task to: user name (is optional)")
+    p.add_argument("--assign", help="assign task to: user name ")
     p.set_defaults(func=add_task)
 
     p = sub.add_parser("list-tasks", help="list of tasks in a project")
