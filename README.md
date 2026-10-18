@@ -15,15 +15,15 @@ Requires Python 3.10 or newer version of.
 Run `python3 main.py COMMAND`. put the quotes around values with spaces.
 
     python3 main.py add-user --name victor
-    python3 main.py add-project --user victor --title "My Project"
-    python3 main.py add-task --project "My Project" --title "First task" --assign victor
+    python3 main.py add-project --user victor --title "project tracker cli"
+    python3 main.py add-task --project "project tracker cli" --title "First task" --assign the task to user victor
     python3 main.py complete-task --id 1
 
     python3 main.py list-users
     python3 main.py list-projects
-    python3 main.py list-tasks --project "My Project"
+    python3 main.py list-tasks --project "project tracker cli"
 
-Add `-h` to any command for help, for example `python3 main.py add-task -h`.
+For help, type `python3 main.py -h`.
 
 ## Commands
 
