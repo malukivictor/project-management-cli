@@ -53,3 +53,7 @@ class Project(Entity):
         due = self.due_date or "no due date"
         done, total = self.progress
         return f"#{self.id} {self.title} (owner: {self.owner.name}, due: {due}, {done}/{total} done)"
+    @classmethod
+    def from_dict(cls, data, owner):
+        return cls(owner, data["title"], data.get("description", ""),
+                   data.get("due_date"), data["id"])

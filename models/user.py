@@ -24,3 +24,6 @@ class User(Person):
     def to_dict(self):
         return {"id": self.id, "name": self.name, "email": self.email}
     
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data["name"], data.get("email", ""), data["id"])

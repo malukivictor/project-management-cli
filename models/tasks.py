@@ -53,3 +53,7 @@ class Task(Entity):
 
     def __repr__(self):
         return f"Task(id={self.id}, title={self.title!r}, status={self.status!r})"
+    @classmethod
+    def from_dict(cls, data, project, assigned_to=None):
+        return cls(project, data["title"], assigned_to,
+                   data.get("status", "pending"), data["id"])

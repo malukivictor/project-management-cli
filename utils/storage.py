@@ -7,13 +7,17 @@ DATA_FILE = "data/tracker.json"
 
 def save():
     data = {
-        "users": [u.to_dict() for u in User.all()],
-        "projects": [p.to_dict() for p in Project.all()],
-        "tasks": [t.to_dict() for t in Task.all()],
+        "users": {str(u.id): u.to_dict() for u in User.all()},
+        "projects": {str(p.id): p.to_dict() for p in Project.all()},
+        "tasks": {str(t.id): t.to_dict() for t in Task.all()},
     }
     os.makedirs(os.path.dirname(DATA_FILE), exist_ok=True)
     with open(DATA_FILE, "w") as f:
-        json.dump(data, f, indent=2)
+        json.dump(data, f, indent=4)
+
+
+def _records(section):
+    return section.values() if isinstance(section, dict) else section
 
 
 def load():
@@ -22,12 +26,12 @@ def load():
     try:
         with open(DATA_FILE) as f:
             data = json.load(f)
-        for u in data["users"]:
-            User(u["name"], u["email"], u["id"])
-        for p in data["projects"]:
-            Project(User.get(p["user_id"]), p["title"], p["description"], p["due_date"], p["id"])
-        for t in data["tasks"]:
-            Task(Project.get(t["project_id"]), t["title"], User.get(t["assigned_to"]), t["status"], t["id"])
+        for u in _records(data["users"]):
+            User.from_dict(u)
+        for p in _records(data["projects"]):
+            Project.from_dict(p, User.get(p["user_id"]))
+        for t in _records(data["tasks"]):
+            Task.from_dict(t, Project.get(t["project_id"]), User.get(t["assigned_to"]))
     except FileNotFoundError:
         pass
     except (json.JSONDecodeError, KeyError, TypeError, AttributeError, ValueError):
