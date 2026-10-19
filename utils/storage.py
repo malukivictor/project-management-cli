@@ -1,10 +1,8 @@
 import json
 import os
-
 from models import User, Project, Task
 
 DATA_FILE = "data/tracker.json"
-
 def save():
     data = {
         "users": {str(u.id): u.to_dict() for u in User.all()},
@@ -15,10 +13,8 @@ def save():
     with open(DATA_FILE, "w") as f:
         json.dump(data, f, indent=4)
 
-
 def _records(section):
     return section.values() if isinstance(section, dict) else section
-
 
 def load():
     for cls in (User, Project, Task):
